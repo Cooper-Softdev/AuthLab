@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Hashhhhy</title>
+    <style>
+        table, th, td {
+          border: 1px solid black;
+          padding: 5px;
+        }
+        table {
+          border-collapse: collapse;
+          width: 100%;
+        }
+        .form-container {
+          margin-top: 20px;
+        }
+        .form-container input[type="text"] {
+          width: 100%;
+          padding: 5px;
+        }
+        .form-container button {
+          margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+<h1>Hashy</h1>
+<a href="/logout">Log Out</a>
+
+<table>
+    <thead>
+    <tr>
+        <th>User Name</th>
+        <th>Hash Name</th>
+        <th>Hash Content</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="hashy: ${currentUser.hashies}">
+        <td th:text="${hashy.siteUser.userName}">User Name</td>
+        <td th:text="${hashy.hashName}">Hash Name</td>
+        <td th:text="${hashy.hashContent}">Hash Content</td>
+    </tr>
+    </tbody>
+</table>
+
+<h2>Add New Hashy Content</h2>
+<div class="form-container">
+    <form action="/post-hashy" method="POST">
+        <div>
+            <label for="inputHashName">Enter Hash Name</label>
+            <input type="text" id="inputHashName" name="hashName">
+        </div>
+        <div>
+            <label for="inputHashContent">Hash Content</label>
+            <input type="text" id="inputHashContent" name="hashContent">
+        </div>
+        <div>
+            <button type="submit">Submit</button>
+        </div>
+    </form>
+</div>
+</body>
+</html>
